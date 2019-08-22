@@ -18,43 +18,37 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author hells
  */
-public class editarControlador {
-    
-     private JdbcTemplate jdbcT;
-    
-    public editarControlador(){
-         Conectar conn= new Conectar();
-        this.jdbcT=new JdbcTemplate(conn.conectar());
-        
-    }
-    
-    @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView usuarioEdit( HttpServletRequest request){
-        
-        ModelAndView mav= new ModelAndView();
-        int idusuario=Integer.parseInt(request.getParameter("idusuario"));
-        mav.setViewName("editar");
-        UsuarioVo usuario=traeUsuario(idusuario);
-        mav.addObject("usuario", usuario);
-        
-        return mav;
+public class borrarControlador {
+
+    private JdbcTemplate jdbcT;
+
+    public borrarControlador() {
+        Conectar conn = new Conectar();
+        this.jdbcT = new JdbcTemplate(conn.conectar());
     }
 
-     @RequestMapping(method=RequestMethod.POST)
-    public ModelAndView usuarioEdit(UsuarioVo u, HttpServletRequest request){
-        int idusuario=Integer.parseInt(request.getParameter("idusuario"));
-        jdbcT.update("UPDATE usuario SET "
-                + "nombre = ?, "
-                + "apellido = ?, "
-                + "login = ?, "
-                + "clave = ?,"
-                + "perfil= ? "
-                + "WHERE idusuario = ?",u.getNombre(),u.getApellido(),u.getLogin(),u.getClave(),u.getPerfil(),idusuario);
-       
-        
-        return new ModelAndView("redirect:/lista.htm");
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView usuarioDelete(HttpServletRequest request) {
+
+        ModelAndView mav = new ModelAndView();
+        int idusuario = Integer.parseInt(request.getParameter("idusuario"));
+        mav.setViewName("borrar");
+        mav.addObject("usuario", traeUsuario(idusuario));
+        return mav;
+
     }
-        public UsuarioVo traeUsuario(int idusuario) {
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView usuarioDelete(UsuarioVo u, HttpServletRequest request) {
+
+        int idusuario = Integer.parseInt(request.getParameter("idusuario"));
+        this.jdbcT.update("DELETE FROM usuario WHERE idusuario =?", idusuario);
+
+        return new ModelAndView("redirect:/lista.htm");
+
+    }
+
+    public UsuarioVo traeUsuario(int idusuario) {
         UsuarioVo u = new UsuarioVo();
 
         String sql = "SELECT * FROM usuario WHERE idusuario= " + idusuario;
@@ -70,5 +64,5 @@ public class editarControlador {
             return u;
         });
     }
-
 }
+

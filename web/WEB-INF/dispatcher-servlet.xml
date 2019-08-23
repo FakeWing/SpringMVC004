@@ -36,10 +36,12 @@
     <!--
     The index controller.
     -->
+    
     <bean id="borrarControlador" class="controladores.borrarControlador"/>
     <bean id="crearControlador" class="controladores.crearControlador"/>
     <bean id="editarControlador" class="controladores.editarControlador"/>
     <bean id="listaControlador" class="controladores.listaControlador"/>
+    
     
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"

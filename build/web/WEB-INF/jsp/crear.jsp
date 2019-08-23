@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" /> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Nuevo Usuario</title>
     </head>
@@ -17,6 +17,12 @@
                 </div>
                 <div class="card-body">
                      <f:form method="post" commandName="usuario">
+                         
+                      
+                        
+                        <<f:errors path="login" cssClass="alert alert-danger" element="div"/>
+                         
+                         
                         <p>
                          <f:label path="nombre">Nombre:</f:label>
                         <f:input  path="nombre" class="form-control" required="true"/>   
@@ -27,11 +33,11 @@
                         </p>
                         <p>
                          <f:label path="login">Login:</f:label>
-                        <f:input path="login" class="form-control" value="" required="true" />   
+                        <f:input path="login" class="form-control"  required="true" />   
                         </p>
                         <p>
                          <f:label path="clave">Clave:</f:label>
-                        <f:input path="clave" class="form-control" value="" required="true" type="password"/>   
+                        <f:input path="clave" class="form-control"  required="true" type="password"/>   
                         </p>
                         <p>
                             <f:label path="perfil">Perfil:</f:label>

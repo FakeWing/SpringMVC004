@@ -24,7 +24,7 @@ public class listaControlador {
         this.jdbcT=new JdbcTemplate(conn.conectar());
      }
      
-         @RequestMapping("lista.htm")
+    @RequestMapping("lista.htm")
     public ModelAndView usuarios(){
         ModelAndView mav=new ModelAndView();
         String sql= "select u.*, (select count(*) from usuario WHERE idusuario = u.idusuario) as inscritos FROM usuario as u ";

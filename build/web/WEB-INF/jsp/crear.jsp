@@ -18,9 +18,7 @@
                 <div class="card-body">
                      <f:form method="post" commandName="usuario">
                          
-                      
-                        
-                        <<f:errors path="login" cssClass="alert alert-danger" element="div"/>
+                      <<f:errors path="login" cssClass="alert alert-danger" element="div"/>
                          
                          
                         <p>
